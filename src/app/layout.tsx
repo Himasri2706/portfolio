@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Outfit } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { PERSONAL_INFO } from '@/lib/data';
 
-const outfit = Outfit({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-outfit',
+  variable: '--font-jakarta',
   display: 'swap',
 });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${outfit.variable} antialiased`}>
+      <body className={`${jakarta.variable} antialiased`}>
         {children}
       </body>
     </html>
