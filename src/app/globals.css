@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Forced Dark Mode (Zinc base, Indigo accent) */
+  --background: #09090b; /* Zinc 950 */
+  --foreground: #f8fafc; /* Slate 50 */
+  
+  --muted: #a1a1aa; /* Zinc 400 */
+  --muted-foreground: #d4d4d8; /* Zinc 300 */
+  
+  --accent: #6366f1; /* Indigo 500 */
+  --accent-foreground: #ffffff;
+  
+  --border: #27272a; /* Zinc 800 */
+  --card: rgba(24, 24, 27, 0.6); /* Zinc 900 semi-transparent for glassmorphism */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-card: var(--card);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-outfit);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  scroll-behavior: smooth;
+  /* Premium radial background glow */
+  background-image: radial-gradient(
+    circle at 50% -20%, 
+    rgba(99, 102, 241, 0.15) 0%, 
+    rgba(9, 9, 11, 0) 60%
+  );
+  background-attachment: fixed;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Subtle scroll reveal animation class */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated gradient text utility */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #818cf8, #38bdf8);
 }
